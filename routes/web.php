@@ -15,5 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('seloger', 'seloger@seloger');
-Route::get('results', 'results@results');
+Route::get('seloger', 'SelogerController@getSelogerInfo');
+Route::get('results', 'ResultPageController@getResults');

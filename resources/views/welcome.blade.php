@@ -49,7 +49,7 @@
                         </div>
                         <div class="row search-action-menu">
                             <div class="col-md-6">
-                                <input class="btn btn-default btn-block btnValidate" type="submit" name="Rechercher">
+                                <input class="btn btn-default btn-block submit-btn-action-menu" type="submit" name="Rechercher" style="width: 130px;">
                             </div>
                         </div>
                     </form>
@@ -67,13 +67,13 @@
                             </div>
                         </div>
                         <div class="row second-options-action-menu">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label class="checkbox-inline"><input type="checkbox" value="maison" name="type">Maison</label>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label class="checkbox-inline"><input type="checkbox" value="appartement" name="type">Appartement</label>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <span class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i></span>
                             </div>
                         </div>
@@ -84,7 +84,7 @@
                         </div>
                         <div class="row search-action-menu">
                             <div class="col-md-6">
-                                <input class="btn btn-default btn-block btnValidate" type="submit" name="Rechercher">
+                                <input class="btn btn-default btn-block submit-btn-action-menu" type="submit" name="Rechercher" style="width: 130px;">
                             </div>
                         </div>
                     </form>
