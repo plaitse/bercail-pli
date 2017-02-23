@@ -21,7 +21,7 @@
             <div class="tab-content panel panel-default panel-action-menu">
                 <div role="tabpanel" class="tab-pane active" id="buy">
                     <form method="GET" id="search-form" action="/results">
-                        <input type="hidden" name="transaction" value="selling">
+                        <input type="hidden" name="transaction" value="sell">
                         <div class="row first-options-action-menu">
                             <div class="col-md-6">
                                 <input type="text" class="form-control" placeholder="Saisissez une ville, un quartier..." 
