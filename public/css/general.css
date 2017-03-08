@@ -1,0 +1,58 @@
+html, body { 
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+.navbar-default {
+	background-color: #ffffff;
+	border-bottom: none;
+}
+.navbar-header {
+    float: left;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+}
+.navbar-brand {
+	font-size: 25px;
+}
+.navbar-brand {
+	float:none;
+}
+.action-menu {
+	margin-top: 2%;
+}
+.block-action-menu {
+	width: 550px;
+}
+.title-action-menu,
+.subtitle-action-menu {
+	text-align: center;
+}
+.subtitle-action-menu {
+	font-style: italic;
+	font-size: 15px;
+}
+.nav-tabs-action-menu {
+	margin-left: 37%;
+	margin-top: 7%;
+	border-bottom: none;
+}
+.panel-action-menu {
+	padding: 20px;
+}
+.first-options-action-menu {
+	margin-bottom: 20px;
+}
+.second-options-action-menu,
+.third-options-action-menu {
+    padding-left: 15px;
+    margin-bottom: 10px;
+}
+.chevron-critera-action-menu {
+	margin-left: 10px;
+}
+.search-action-menu {
+    position: absolute;
+    margin-left: 340px;
+}
