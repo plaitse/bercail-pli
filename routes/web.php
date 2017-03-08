@@ -15,5 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('seloger', 'seloger@seloger');
-Route::get('results', 'results@results');
+Route::get('seloger', 'SelogerController@getSelogerInfo');
+Route::post('results', 'ResultPageController@getResults');
+Route::get('api/results', 'ResultPageController@getResults');
+
+Route::get('api/hello', function () {
+	$hello = array(array('Bonjour le monde'), array('hello world'), array('ola el mundo'));
+	// dd($hello);
+    return $hello;
+});

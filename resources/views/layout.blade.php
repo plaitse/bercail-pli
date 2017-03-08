@@ -13,16 +13,17 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/result-page.css">
     </head>
 
     @yield('head')
 
     <body>
 
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default navbar-static-top container-fluid">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="/">
                         Bercail
                     </a>
                 </div>
@@ -38,5 +39,7 @@
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="js/result-page.js" ></script>
+        <script src="js/script.js"></script>
     </body>
 </html>

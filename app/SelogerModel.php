@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
 require '../vendor/seloger-php/src/SeLoger/Request.php';
 require '../vendor/seloger-php/src/SeLoger/Search.php';
 
-class seloger extends Controller
+class SelogerModel extends Model
 {
-    public function selogerAction ($inputs) {
-
+    public function getSelogerInfo ($inputs) {
     	// dd($inputs);
 
 		$search = new \Seloger\Search();
@@ -27,9 +27,9 @@ class seloger extends Controller
 		// Get results
 		$results = $search->run();
 		// dd($results);
-		//echo '<pre>' . print_r(variable, TRUE) . '<pre>';
-
+		//echo '<pre>' . print_r($results->annonces->annonce[0]->firstThumb, TRUE) . '<pre>';
 
     	return $results;
     }
+
 }
