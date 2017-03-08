@@ -74,6 +74,7 @@
                             </div>
                             <div class="col-md-3">
                                 <label class="checkbox-inline"><input type="checkbox" value="appartement" name="type" required>Appartement</label>
+
                             </div>
                             <div class="col-md-3">
                                 <span class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i></span>
