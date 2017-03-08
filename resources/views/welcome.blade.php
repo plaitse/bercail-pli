@@ -20,23 +20,24 @@
             <!-- Tab panes -->
             <div class="tab-content panel panel-default panel-action-menu">
                 <div role="tabpanel" class="tab-pane active" id="buy">
-                    <form method="GET" id="search-form" action="/results">
+                    <form method="post" id="search-form" action="/results">
                         <input type="hidden" name="transaction" value="sell">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="row first-options-action-menu">
                             <div class="col-md-6">
                                 <input type="text" class="form-control" placeholder="Saisissez une ville, un quartier..." 
-                                aria-describedby="basic-addon1" name="localisation">
+                                aria-describedby="basic-addon1" name="localisation" required>
                             </div>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Budget max" aria-describedby="basic-addon1" name="budgetMax">
+                                <input type="text" class="form-control" placeholder="Budget max" aria-describedby="basic-addon1" name="budgetMax" required>
                             </div>
                         </div>
                         <div class="row second-options-action-menu">
                             <div class="col-md-3">
-                                <label class="checkbox-inline"><input type="checkbox" value="maison" name="type">Maison</label>
+                                <label class="checkbox-inline"><input type="checkbox" value="maison" name="type" required>Maison</label>
                             </div>
                             <div class="col-md-3">
-                                <label class="checkbox-inline"><input type="checkbox" value="appartement" name="type">Appartement</label>
+                                <label class="checkbox-inline"><input type="checkbox" value="appartement" name="type" required>Appartement</label>
                             </div>
                             <div class="col-md-3">
                                 <span class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i></span>
@@ -55,23 +56,25 @@
                     </form>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="rent">
-                    <form method="GET" id="search-form" action="/results">
+                    <form method="post" id="search-form" action="/results">
                         <input type="hidden" name="transaction" value="rent">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="row first-options-action-menu">
                             <div class="col-md-6">
                                 <input type="text" class="form-control" placeholder="Saisissez une ville, un quartier..." 
-                                aria-describedby="basic-addon1" name="localisation">
+                                aria-describedby="basic-addon1" name="localisation" required>
                             </div>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Budget max" aria-describedby="basic-addon1" name="budgetMax">
+                                <input type="text" class="form-control" placeholder="Budget max" aria-describedby="basic-addon1" name="budgetMax" required>
                             </div>
                         </div>
                         <div class="row second-options-action-menu">
                             <div class="col-md-3">
-                                <label class="checkbox-inline"><input type="checkbox" value="maison" name="type">Maison</label>
+                                <label class="checkbox-inline"><input type="checkbox" value="maison" name="type" required>Maison</label>
                             </div>
                             <div class="col-md-3">
-                                <label class="checkbox-inline"><input type="checkbox" value="appartement" name="type">Appartement</label>
+                                <label class="checkbox-inline"><input type="checkbox" value="appartement" name="type" required>Appartement</label>
+
                             </div>
                             <div class="col-md-3">
                                 <span class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i></span>
