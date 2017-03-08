@@ -1,0 +1,71 @@
+/* Sticky navbar */
+.affix {
+  	top: 0;
+  	width: 100%;
+}
+.affix + .container-fluid {
+  	padding-top: 70px;
+}
+.sticky-nav-ad-result {
+	z-index: 99;
+	background-color: #e7e7e7;
+}
+
+/* Ad result */
+.row-ad-result {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+.box-ad-result {
+	border: 1px solid #dddddd;
+	border-radius: 3px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+.image-ad-result {
+	padding-top: 5px;
+}
+.image-ad-result > img {
+	height: 145px;
+	margin-left: 4px;
+}
+.image-test-ad-result {
+	width: 145px;
+    height: 145px;
+    margin-left: 4px;
+	border: 1px solid #dddddd;
+	padding-top: 31%;
+	text-align: center;
+    padding-left: -4px;
+}
+.description-ad-result {
+	margin-top: 3%;
+    text-align: center;
+}
+.price-ad-result {
+	margin-top: 3%;
+	text-align: center;
+}
+.compare-ad-result {
+    height: 145px;
+    width: 145px;
+    margin-top: 4px;
+    border: 1px solid #dddddd;
+    font-size: 10px;
+    text-align: center;
+    padding-top: 10px;
+    border-radius: 5px;
+}
+.compare-ad-result > p {
+	margin-bottom: 0px;
+}
+.good-plans-ad-result {
+	margin-top: 6px;
+}
+.good-plans-name-ad-result {
+	font-style: italic;
+}
+.good-plans-price-ad-result {
+	font-weight: bold;
+	padding-bottom: 3px;
+}
