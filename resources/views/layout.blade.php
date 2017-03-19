@@ -14,13 +14,14 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/result-page.css">
+        <link rel="stylesheet" href="css/detail-page.css">
     </head>
 
     @yield('head')
 
     <body>
 
-        <nav class="navbar navbar-default navbar-static-top container-fluid">
+        <nav class="navbar navbar-default navbar-static-top container-fluid navbar-border">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="/">
