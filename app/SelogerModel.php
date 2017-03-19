@@ -8,7 +8,7 @@ require '../vendor/seloger-php/src/SeLoger/Search.php';
 
 class SelogerModel extends Model
 {
-    public function getSelogerInfo ($inputs) {
+    public function getSelogerInfo($inputs) {
     	// dd($inputs);
 
 		$search = new \Seloger\Search();
@@ -30,6 +30,14 @@ class SelogerModel extends Model
 		//echo '<pre>' . print_r($results->annonces->annonce[0]->firstThumb, TRUE) . '<pre>';
 
     	return $results;
+    }
+
+    public function getSelogerDetail($inputs) {
+    	$request = new \Seloger\Request();
+    	$request->type = 'annonceDetail';
+		$request->setParams('idAnnonce', $inputs['SelogerId']);
+		$results = $request->run();
+		return $results;
     }
 
 }
