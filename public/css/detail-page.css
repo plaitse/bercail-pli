@@ -1,0 +1,51 @@
+/* ---- Ad detail ---- */
+
+.return-back-detail {
+	margin-top: 20px;
+}
+.link-return-back-detail,
+.link-return-back-detail:visited,
+.link-return-back-detail:hover,
+.link-return-back-detail:focus,
+.link-return-back-detail:active {
+	color: #333;
+}
+i.fa.fa-long-arrow-left {
+    margin-right: 5px;
+}
+.title-ad-detail {
+	margin-top: 10px;
+}
+.row-ad-detail {
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 20px;
+	padding-top: 34px;
+}
+.col-ad-detail {
+    border: 1px solid #aaa;
+    background: #fafafa;
+    border-radius: 2px;
+    padding: 10px;
+}
+.price-ad-detail {
+	margin-left: 20px;
+}
+.image-test-ad-detail {
+	width: 145px;
+    height: 145px;
+	border: 1px solid #dddddd;
+	margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+	padding-top: 7%;
+	text-align: center;
+}
+.description-ad-detail {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.description-title-ad-detail {
+	font-weight: bold;
+	font-size: 18px;
+}

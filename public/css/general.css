@@ -6,7 +6,9 @@ html, body {
 }
 .navbar-default {
 	background-color: #f0dca6;
-	border-bottom: none;
+}
+.navbar-border {
+	border-bottom: 1px solid #bbb;
 }
 .navbar-header {
     float: left;
