@@ -110,6 +110,15 @@ a.alert-filter-sticky-nav-ad-result {
 	text-align: right;
 	width: 50px;
 }
+.radiobtn-ad-result {
+    margin-top: 0px!important;
+    margin-right: 1px!important;
+}
+.rooms-criteria-ad-result {
+	margin-bottom: 0px;
+	font-weight: bold;
+    font-size: 13px;
+}
 
 /* ---- Filter box ---- */
 
