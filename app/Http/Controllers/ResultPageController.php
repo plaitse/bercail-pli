@@ -21,7 +21,7 @@ class ResultPageController
     	$route = $request->path();
 		$inputs = $request->all();
 
-		// $this->explore->getExploreImmoInfo($inputs);
+		$this->explore->getExploreImmoInfo($inputs);
 
 		// dd($inputs);
 		if ($inputs) {
