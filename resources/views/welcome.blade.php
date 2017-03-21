@@ -9,10 +9,10 @@
 
             <!-- Nav tabs -->
             <ul class="nav nav-tabs nav-tabs-action-menu" role="tablist">
-                <li role="presentation" class="active">
+                <li role="presentation" class="buy-tab-action-menu active">
                     <a href="#buy" aria-controls="buy" role="tab" data-toggle="tab">Acheter</a>
                 </li>
-                <li role="presentation">
+                <li role="presentation" class="rent-tab-action-menu">
                     <a href="#rent" aria-controls="rent" role="tab" data-toggle="tab">Louer</a>
                 </li>
             </ul>
@@ -40,7 +40,7 @@
                                 <label class="checkbox-inline"><input type="checkbox" value="appartement" name="type" required>Appartement</label>
                             </div>
                             <div class="col-md-3">
-                                <span class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                <span class="btn btn-default btn-critera-action-menu"><i class="fa fa-plus" aria-hidden="true"></i></span>
                             </div>
                         </div>
                         <div class="row third-options-action-menu">
@@ -74,9 +74,10 @@
                             </div>
                             <div class="col-md-3">
                                 <label class="checkbox-inline"><input type="checkbox" value="appartement" name="type" required>Appartement</label>
+
                             </div>
                             <div class="col-md-3">
-                                <span class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                <span class="btn btn-default btn-critera-action-menu"><i class="fa fa-plus" aria-hidden="true"></i></span>
                             </div>
                         </div>
                         <div class="row third-options-action-menu">

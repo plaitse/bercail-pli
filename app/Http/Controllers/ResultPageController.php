@@ -27,6 +27,7 @@ class ResultPageController
 		if ($inputs) {
     		$results = $this->seloger->getSelogerInfo($inputs);
 	        if($route == "results"){
+	        	//dd($results);
 				return view('pages.result-page', compact('results'));
 	        }
 	        elseif($route == "api/results"){

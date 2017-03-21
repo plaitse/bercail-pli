@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get('seloger', 'SelogerController@getSelogerInfo');
 Route::post('results', 'ResultPageController@getResults');
+Route::get('detail', 'DetailPageController@getDetail');
 Route::get('api/results', 'ResultPageController@getResults');
 
 Route::get('api/hello', function () {

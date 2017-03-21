@@ -1,15 +1,13 @@
 <?php
 
-namespace App;
-
-use Illuminate\Database\Eloquent\Model;
+namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 require '../vendor/seloger-php/src/SeLoger/Request.php';
 require '../vendor/seloger-php/src/SeLoger/Search.php';
 
-class SelogerModel extends Model
+class SelogerController extends Controller
 {
-    public function getSelogerInfo($inputs) {
-    	// dd($inputs);
+    public function getSelogerInfo ($inputs) {
 
 		$search = new \Seloger\Search();
 
@@ -31,13 +29,4 @@ class SelogerModel extends Model
 
     	return $results;
     }
-
-    public function getSelogerDetail($inputs) {
-    	$request = new \Seloger\Request();
-    	$request->type = 'annonceDetail';
-		$request->setParams('idAnnonce', $inputs['SelogerId']);
-		$results = $request->run();
-		return $results;
-    }
-
 }
