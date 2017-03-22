@@ -21,14 +21,16 @@ class ResultPageController
     	$route = $request->path();
 		$inputs = $request->all();
 
-		$this->explore->getExploreImmoInfo($inputs);
+		// $this->explore->getExploreImmoInfo($inputs);
 
 		// dd($inputs);
+
 		if ($inputs) {
     		$results = $this->seloger->getSelogerInfo($inputs);
 	        if($route == "results"){
-	        	//dd($results);
-				return view('pages.result-page', compact('results'));
+	        	// dd($results);
+	        	// dd($inputs);
+				return view('pages.result-page', compact('results'), compact('inputs'));
 	        }
 	        elseif($route == "api/results"){
 				return json_encode(compact('results'));
@@ -37,5 +39,7 @@ class ResultPageController
         else{
         	return "Pas de bras, pas de chocolat ! mouahahahahahah :D";
         }
+
+
 	}
 }
