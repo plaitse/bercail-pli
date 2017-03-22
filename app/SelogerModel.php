@@ -17,6 +17,14 @@ class SelogerModel extends Model
 		$search->type($inputs["transaction"]);
 		$search->order('date_desc');
 		$search->property($inputs["type"]);
+
+		if(isset($inputs["room"])){
+			$search->room($inputs["room"]);
+		}
+		if(isset($inputs["surface-min"]) && isset($inputs["surface-max"])){
+			$search->surface($inputs["surface-min"], $inputs["surface-max"]);
+		}
+
 		$search->zipcode($inputs['localisation']);
 		$search->price(0, $inputs["budgetMax"]);
 		// $search->page(2);
@@ -25,6 +33,7 @@ class SelogerModel extends Model
 		// $search->si('elevator', TRUE);
 
 		// Get results
+		// dd($search);
 		$results = $search->run();
 		// dd($results);
 		//echo '<pre>' . print_r($results->annonces->annonce[0]->firstThumb, TRUE) . '<pre>';
