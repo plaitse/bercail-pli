@@ -86,6 +86,7 @@
 					<input type="text" class="form-control" id="localisation" value="{{ $inputs['localisation'] }}" name="localisation">
 				</div>
 		    </li>
+		    <div class="separation-result-box-ad-result"></div>
 		    <li>
 		    	<div class="form-group">
 		  			<input class="btn filter-change-box-ad-result result-filter-ad-result" type="submit" value="Rechercher">
