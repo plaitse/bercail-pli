@@ -3,6 +3,9 @@
 nav.navbar.navbar-default.navbar-static-top.container-fluid {
     margin-bottom: 0px;
 }
+nav.navbar.navbar-default.navbar-static-top.container-fluid.navbar-border {
+	border-bottom: none;
+}
 
 /* ---- Sticky navbar ---- */
 
@@ -12,6 +15,9 @@ nav.navbar.navbar-default.navbar-static-top.container-fluid {
 }
 .affix + .container-fluid {
   	padding-top: 90px;
+}
+nav.navbar.navbar-default.sticky-nav-ad-result.affix-top {
+    border-bottom: 1px solid #bbb;
 }
 .sticky-nav-ad-result {
 	z-index: 99;
@@ -103,6 +109,15 @@ a.alert-filter-sticky-nav-ad-result {
 .active-alert-filter-sticky-nav-ad-result {
 	text-align: right;
 	width: 50px;
+}
+.radiobtn-ad-result {
+    margin-top: 0px!important;
+    margin-right: 1px!important;
+}
+.rooms-criteria-ad-result {
+	margin-bottom: 0px;
+	font-weight: bold;
+    font-size: 13px;
 }
 
 /* ---- Filter box ---- */
