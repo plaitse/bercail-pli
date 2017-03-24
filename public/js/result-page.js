@@ -2,10 +2,21 @@
 var map;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 48.85, lng: 2.34},
-    zoom: 8
+    center: {lat: 48.85661400000001, lng: 2.3522219000000177},
+    zoom: 11
   });
+
+
+  // 	$('.box-ad-result').each(function(){	
+		// var myLatLng = {lat: parseInt($(this).prop('data-latitude')), lng: parseInt($(this).prop('data-longitude'))};
+		// var marker = new google.maps.Marker({
+		// 	position: myLatLng,
+		// 	map: map,
+		// 	title: 'Hello World!'
+		// });
+  // 	});
 }
+
 
 // /* Filter boxes */
 // $(function() {
