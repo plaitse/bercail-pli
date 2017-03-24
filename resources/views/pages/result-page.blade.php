@@ -41,7 +41,7 @@
 						<div class="row">
 							<div class="col-md-3 image-ad-result">
 								@if (isset($value->firstThumb))
-									<img src="{{ $value->firstThumb }}">
+									<a href="/detail?SelogerId={{ $value->idAnnonce }}"><img src="{{ $value->firstThumb }}"></a>
 								@else
 									<div class="image-test-ad-result">Aucune photo disponible</div>
 								@endif					
@@ -55,7 +55,7 @@
 							</div>
 							<div class="col-md-3 price-ad-result">
 								<h3>{{ $value->prix }} €*</h3>
-								<a class="btn btn-default" href="/detail?SelogerId={{ $value->idAnnonce }}">Voir l'offre</a>
+								<a class="btn btn-default" href="{{ $value->permaLien }}">Voir l'offre</a>
 							</div>
 							<div class="col-md-3 compare-ad-result">
 								<p lass="good-plans-name-ad-result">Leboncoin</p>
@@ -80,7 +80,7 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 <!-- Google Map & Filter Boxes -->
-<script src="js/result-page.js" ></script>
+{{-- <script src="js/result-page.js" ></script> --}}
 <!-- Google Map -->
 <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4PbEHid5Cpv2h2peonwutOHk9Jvr-0oY&callback=initMap">

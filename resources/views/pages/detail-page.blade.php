@@ -6,9 +6,9 @@
 	<div class="col-md-4 return-back-detail"><a href="#" class="link-return-back-detail">
 		<i class="fa fa-long-arrow-left" aria-hidden="true"></i>Retour à la liste</a>
 	</div>
+
 	<div class="col-md-8 title-ad-detail">
-		<h4> {{ $results->titre }} {{ $results->nbPieces }} pièces {{ $results->surface }} 
-				{{ $results->surfaceUnite}} {{ $results->ville}}</h4>
+		<h4> {{ $results->titre }} {{ $results->nbPieces }} pièces @if(isset($value->surface)){{ $value->surface }}  {{ $value->surfaceUnite }} @endif {{ $results->ville}}</h4>
 	</div>
 	<div class="row row-ad-detail">
 		<div class="col-md-4">

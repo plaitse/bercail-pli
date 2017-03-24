@@ -89,3 +89,7 @@ $(function() {
 	});
 });
 
+$('#tri').change(function(){
+	$('#search-form').submit();
+});
+
