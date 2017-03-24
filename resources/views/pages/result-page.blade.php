@@ -55,7 +55,7 @@
 							</div>
 							<div class="col-md-3 price-ad-result">
 								<h3>{{ $value->prix }} €*</h3>
-								<a class="btn btn-default" href="/detail?SelogerId={{ $value->idAnnonce }}">Voir l'offre</a>
+								<a class="btn btn-default" href="{{ $value->permaLien }}">Voir l'offre</a>
 							</div>
 							<div class="col-md-3 compare-ad-result">
 								<p lass="good-plans-name-ad-result">Leboncoin</p>
