@@ -7,20 +7,20 @@
 <nav class="navbar navbar-default sticky-nav-ad-result" data-spy="affix" data-offset-top="53">
 	<div class="container-fluid">
 	  	<ul class="nav navbar-nav filters-sticky-nav-ad-result">
-	  		<li><a href="#" class="project-filter-sticky-nav-ad-result">
+	  		<li><a href="#" class="project-filter-sticky-nav-ad-result filter-link" data-link="project-box-ad-result">
 	  			@if ($inputs['transaction'] == "sell")
 				    Acheter
 				@elseif ($inputs['transaction'] == "rent")
 				    Louer
 				@endif
 	  		</a></li>
-	    	<li><a href="#" class="type-filter-sticky-nav-ad-result">{{ ucfirst($inputs['type']) }}</a></li>
-	    	<li><a href="#" class="rooms-filter-sticky-nav-ad-result">1 et +</a></li>
-	    	<li><a href="#" class="surface-filter-sticky-nav-ad-result">Surface min</a></li>
-	    	<li><a href="#" class="place-filter-sticky-nav-ad-result">Paris 17ème</a></li>
-	    	<li><a href="#" class="budget-filter-sticky-nav-ad-result">{{ $inputs['budgetMax'] }}€ max</a></li>
-	    	<li><a href="#" class="more-filter-sticky-nav-ad-result">+ de critères</a></li>
-	    	<li><a href="#" class="alert-filter-sticky-nav-ad-result">
+	    	<li><a href="#" class="type-filter-sticky-nav-ad-result filter-link">{{ ucfirst($inputs['type']) }}</a></li>
+	    	<li><a href="#" class="rooms-filter-sticky-nav-ad-result filter-link">1 et +</a></li>
+	    	<li><a href="#" class="surface-filter-sticky-nav-ad-result filter-link filter-link">Surface min</a></li>
+	    	<li><a href="#" class="place-filter-sticky-nav-ad-result filter-link">Paris 17ème</a></li>
+	    	<li><a href="#" class="budget-filter-sticky-nav-ad-result filter-link">{{ $inputs['budgetMax'] }}€ max</a></li>
+	    	<li><a href="#" class="more-filter-sticky-nav-ad-result filter-link">+ de critères</a></li>
+	    	<li><a href="#" class="alert-filter-sticky-nav-ad-result filter-link">
 	    		<i class="fa fa-bell-o" aria-hidden="true" class="pull-left"></i> 
 	    		<span class="pull-right active-alert-filter-sticky-nav-ad-result">Activer l'alerte</span>
 	    	</a></li>
