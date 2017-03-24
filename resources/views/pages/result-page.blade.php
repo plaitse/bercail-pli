@@ -35,7 +35,7 @@
 			<div id="map" style="height:550px;"></div>
 		</div>
 		<div class="col-md-8 col-ad-result">
-			@if ($results->nbTrouvees > 0)
+			@if ($results->nbTrouvees > 1)
 				@foreach($results->annonces->annonce as $value)
 					<div class="box-ad-result">
 						<div class="row">

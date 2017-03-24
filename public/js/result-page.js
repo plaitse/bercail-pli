@@ -93,12 +93,13 @@ $('.filter-link').click(function(){
 	var divClass = $(this).prop("class").split('-filter-')[0]+'-box-ad-result';
 	if ($('.'+divClass).css("display") == "block"){
 		$('.'+divClass).hide();
+		$('.overlay-background-ad-result').hide();
 	}
 	else{	
-		console.log($('.'+divClass).css("display"));
 		$('.filter-box-ad-result').hide();
 		if ($('.'+divClass).css("display") == "none"){
 			$('.'+divClass).show();
+			$('.overlay-background-ad-result').show();
 		}
 	}
 });
