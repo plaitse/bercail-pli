@@ -1,7 +1,7 @@
 <form method="post" id="search-form" action="/results">
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<div class="tri">
-		<p>
+		<p class="filter-sort-ad-result">
 			Trier par :
 		    <select name="tri" id="tri">
 				<option value="date_asc">Date asc</option>

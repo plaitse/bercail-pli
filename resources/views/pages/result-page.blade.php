@@ -16,8 +16,8 @@
 	  		</a></li>
 	    	<li><a href="#" class="type-filter-sticky-nav-ad-result filter-link">{{ ucfirst($inputs['type']) }}</a></li>
 	    	<li><a href="#" class="rooms-filter-sticky-nav-ad-result filter-link">1 et +</a></li>
-	    	<li><a href="#" class="surface-filter-sticky-nav-ad-result filter-link filter-link">Surface min</a></li>
-	    	<li><a href="#" class="place-filter-sticky-nav-ad-result filter-link">Paris 17ème</a></li>
+	    	<li><a href="#" class="surface-filter-sticky-nav-ad-result filter-link filter-link">Surface</a></li>
+	    	<li><a href="#" class="place-filter-sticky-nav-ad-result filter-link">Localisation</a></li>
 	    	<li><a href="#" class="budget-filter-sticky-nav-ad-result filter-link">{{ $inputs['budgetMax'] }}€ max</a></li>
 	    	<li><a href="#" class="more-filter-sticky-nav-ad-result filter-link">+ de critères</a></li>
 	    	<li><a href="#" class="alert-filter-sticky-nav-ad-result filter-link">
@@ -37,7 +37,7 @@
 		<div class="col-md-8 col-ad-result">
 			@if ($results->nbTrouvees > 1)
 				@foreach($results->annonces->annonce as $value)
-					<div class="box-ad-result">
+					<div class="box-ad-result" data-latitude="{{ $value->latitude }}" data-longitude="{{ $value->longitude }}">
 						<div class="row">
 							<div class="col-md-3 image-ad-result">
 								@if (isset($value->firstThumb))
