@@ -39,7 +39,5 @@ class ResultPageController
         else{
         	return "Pas de bras, pas de chocolat ! mouahahahahahah :D";
         }
-
-
 	}
 }

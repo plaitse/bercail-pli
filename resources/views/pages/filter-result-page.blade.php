@@ -1,5 +1,18 @@
 <form method="post" id="search-form" action="/results">
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+	<div class="tri">
+		<p class="filter-sort-ad-result">
+			Trier par :
+		    <select name="tri" id="tri">
+				<option value="date_asc">Date asc</option>
+				<option value="date_desc">Date dsc</option>
+				<option value="price_asc">Prix asc</option>
+				<option value="price_desc">Prix dsc</option>
+				<option value="surface_asc">Surf asc</option>
+				<option value="surface_desc">Surf dsc</option>
+		    </select>
+		</p>
+	</div>
 	<div class="filter-box-ad-result project-box-ad-result">
 		<p class="filter-title-box-ad-result">Quel est votre projet ?</p>
 			<ul class="nav navbar-nav filter-change-box-ad-result">
@@ -83,7 +96,22 @@
 		    <li>
 				<div class="form-group">
 					<label for="localisation">Saisissez une ville, un quartier...</label>
-					<input type="text" class="form-control" id="localisation" value="{{ $inputs['localisation'] }}" name="localisation">
+                    <select name="localisation" required class="form-control">
+                        <?php 
+
+                            $zipcodes = config('zipcode');
+                            foreach ($zipcodes as $cat => $codes)
+                            {
+                                  echo '<optgroup label="'.$cat.'">';
+                                  foreach ($codes as $key => $value) {
+                                      echo '<option value="' . $key . '">' . $value . '</option>';
+                                  }   
+                                  echo '</optgroup>';
+                            } 
+
+                        ?>
+                    </select>
+{{-- 					<input type="text" class="form-control" id="localisation" value="{{ $inputs['localisation'] }}" name="localisation"> --}}
 				</div>
 		    </li>
 		    <div class="separation-result-box-ad-result"></div>

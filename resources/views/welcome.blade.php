@@ -25,8 +25,23 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="row first-options-action-menu">
                             <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Saisissez une ville, un quartier..." 
-                                aria-describedby="basic-addon1" name="localisation" required>
+                                <select name="localisation" required class="form-control">
+                                    <?php 
+
+                                        $zipcodes = config('zipcode');
+                                        foreach ($zipcodes as $cat => $codes)
+                                        {
+                                              echo '<optgroup label="'.$cat.'">';
+                                              foreach ($codes as $key => $value) {
+                                                  echo '<option value="' . $key . '">' . $value . '</option>';
+                                              }   
+                                              echo '</optgroup>';
+                                        } 
+
+                                    ?>
+                                </select>
+                    {{--             <input type="text" class="form-control" placeholder="Saisissez une ville, un quartier..." 
+                                aria-describedby="basic-addon1" name="localisation" required> --}}
                             </div>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" placeholder="Budget max" aria-describedby="basic-addon1" name="budgetMax" required>
@@ -61,8 +76,23 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="row first-options-action-menu">
                             <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Saisissez une ville, un quartier..." 
-                                aria-describedby="basic-addon1" name="localisation" required>
+                                <select name="localisation" required class="form-control">
+                                    <?php 
+
+                                        $zipcodes = config('zipcode');
+                                        foreach ($zipcodes as $cat => $codes)
+                                        {
+                                              echo '<optgroup label="'.$cat.'">';
+                                              foreach ($codes as $key => $value) {
+                                                  echo '<option value="' . $key . '">' . $value . '</option>';
+                                              }   
+                                              echo '</optgroup>';
+                                        } 
+
+                                    ?>
+                                </select>
+{{--                                 <input type="text" class="form-control" placeholder="Saisissez une ville, un quartier..." 
+                                aria-describedby="basic-addon1" name="localisation" required> --}}
                             </div>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" placeholder="Budget max" aria-describedby="basic-addon1" name="budgetMax" required>

@@ -1,4 +1,4 @@
-/* ---- Header ---- */
+	/* ---- Header ---- */
 
 nav.navbar.navbar-default.navbar-static-top.container-fluid {
     margin-bottom: 0px;
@@ -187,6 +187,11 @@ a.alert-filter-sticky-nav-ad-result {
 .result-filter-ad-result:active {
 	background-color: #6799b2;
 	color: #fafafa; 
+}
+.filter-sort-ad-result {
+    float: right;
+    margin-top: -43px;
+    margin-right: 70px;
 }
 
 /* ---- Ad result ---- */
