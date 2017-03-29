@@ -1,10 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models\Seloger;
 
 use Illuminate\Database\Eloquent\Model;
 require '../vendor/seloger-php/src/SeLoger/Request.php';
 require '../vendor/seloger-php/src/SeLoger/Search.php';
+use App\Http\Controllers\Tools\ZipController;
 
 class SelogerModel extends Model
 {
@@ -12,6 +13,7 @@ class SelogerModel extends Model
     	// dd($inputs);
 
 		$search = new \Seloger\Search();
+		$ZipController = new ZipController();
 
 		// Apply custom options
 		$search->type($inputs["transaction"]);
@@ -28,7 +30,7 @@ class SelogerModel extends Model
 			$search->order($inputs["tri"]);
 		}
 
-		$search->zipcode($inputs['localisation']);
+		$search->zipcode($ZipController->idToSelogerInsee($inputs['localisation']));
 		$search->price(0, $inputs["budgetMax"]);
 		// $search->page(2);
 
