@@ -25,8 +25,8 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="row first-options-action-menu">
                             <div class="col-md-6">
-                                <select name="localisation" required class="form-control">
-                                    <?php 
+                                {{-- <select name="localisation" required class="form-control"> --}}
+                                    <?php /*
 
                                         $zipcodes = config('zipcode');
                                         foreach ($zipcodes as $cat => $codes)
@@ -36,9 +36,12 @@
                                                   echo '<option value="' . $key . '">' . $value . '</option>';
                                               }   
                                               echo '</optgroup>';
-                                        } 
+                                        } */
 
                                     ?>
+                                {{-- </select> --}}
+                                <select name="localisation[]" required class="form-control zip-select2" multiple="multiple">
+                                    {{-- <option value="3620194" selected="selected">select2/select2</option> --}}
                                 </select>
                     {{--             <input type="text" class="form-control" placeholder="Saisissez une ville, un quartier..." 
                                 aria-describedby="basic-addon1" name="localisation" required> --}}

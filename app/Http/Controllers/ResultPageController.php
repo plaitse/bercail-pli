@@ -3,27 +3,39 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ExploreImmoModel;
-use App\SelogerModel;
+use App\Models\Seloger\SelogerModel;
+use App\Models\Logicimmo\LogicimmoModel;
+
+
 
 class ResultPageController
 {
 
-	private $explore;
+	// private $explore;
 	private $seloger;
+	private $logicimmo;
 
 	public function __construct()
 	{
-		$this->explore = new ExploreImmoModel();
+		// $this->explore = new ExploreImmoModel();
 		$this->seloger = new SelogerModel();
+		$this->logicimmo = new LogicimmoModel();
 	}
 
     public function getResults (Request $request) {
-    	$route = $request->path();
+
 		$inputs = $request->all();
+		// dd($inputs);
+
+    	// $resultsLogicimmo = $this->logicimmo->getLogicimmoResults($inputs);
+
+
+
+
+    	$route = $request->path();
 
 		// $this->explore->getExploreImmoInfo($inputs);
 
-		// dd($inputs);
 
 		if ($inputs) {
     		$results = $this->seloger->getSelogerInfo($inputs);
