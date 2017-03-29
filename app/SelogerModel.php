@@ -18,11 +18,14 @@ class SelogerModel extends Model
 		$search->order('date_desc');
 		$search->property($inputs["type"]);
 
-		if(isset($inputs["room"])){
+		if(isset($inputs["room"])) {
 			$search->room($inputs["room"]);
 		}
 		if(isset($inputs["surface-min"]) && isset($inputs["surface-max"])){
 			$search->surface($inputs["surface-min"], $inputs["surface-max"]);
+		}		
+		if(isset($inputs["tri"])) {
+			$search->order($inputs["tri"]);
 		}
 
 		$search->zipcode($inputs['localisation']);
