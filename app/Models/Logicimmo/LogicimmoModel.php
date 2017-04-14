@@ -10,7 +10,7 @@ class LogicimmoModel extends Model
 {
 
     private $client;
-    private $ZipController
+    private $ZipController;
 
     public function __construct()
     {
@@ -37,16 +37,26 @@ class LogicimmoModel extends Model
     	// return $crawler;
     }
     public function urlBuilder($inputs) {
+        // dd($inputs);
         $url = 'http://www.logic-immo.com/';
-        $url = $this->paramType($inputs['transaction'], $url);
-        // $url = $this->paramZip($inputs['localisation'], $url);
-
+        $url = $this->paramProject($inputs['transaction'], $url);
+        $url = $this->paramZip($inputs['localisation'], $url);
+        $url .= '/options/';
+        $url = $this->paramType($inputs['type'], $url);
+        $url = $this->paramBudgetMax($inputs['budgetMax'], $url);
+        if(isset($inputs['surface-min'])){
+            $url = $this->paramAreaMin($inputs['surface-min'], $url);
+        }
+        if(isset($inputs['surface-max'])){
+            $url = $this->paramAreaMax($inputs['surface-max'], $url);
+        }
+        // dd($url);
         // http://www.logic-immo.com/vente-immobilier-paris-9e-75009,23609_2/options/groupprptypesids=1,2,6,7,12,15/pricemin=450000/pricemax=950000/areamin=30
        
         return $url;
     }
 
-    public function paramType($type, $url) {
+    public function paramProject($type, $url) {
         if($type == 'sell'){
             $url .= 'vente-immobilier-';
         }       
@@ -56,12 +66,69 @@ class LogicimmoModel extends Model
         return $url;
     }
 
-    public function paramZip ($zip, $url) {
+    // http://www.logic-immo.com/vente-immobilier-paris-8e-75008,paris-7e-75007,23607_2,23606_2/options/groupprptypesids=1,2,6,7,12,15/pricemin=450000/pricemax=950000/areamin=30
+
+    // http://www.logic-immo.com/vente-immobilier-paris-8e-75008,paris-7e-75007,23607_2,23606_2/options/groupprptypesids=1,2,6,7,12,15/searchoptions=1/pricemin=450000/pricemax=950000/areamin=30/nbbedrooms=2,3/advancedcriteria=14,3,24,13,16,10
+
+    //http://www.logic-immo.com/vente-immobilier-paris-8e-75008,paris-7e-75007,23607_2,23606_2/options/groupprptypesids=1,2,15,12,6,7/pricemin=500/pricemax=2000000/areamin=34/areamax=500/nbrooms=2,3,4/nbbedrooms=1,2,3
+
+    public function paramZip($zip, $url) {
         // dd($zip);
         $zipLogicImmoParams = $this->ZipController->idToLogicImmo($zip);
-        // dd($zipLogicImmoParams);
-        // $getZipInfosFromLogicImmo = file_get_contents("http://www.logic-immo.com/asset/t9/getLocalityT9.php/?site=fr&lang=fr&json=75009");
-        $getZipInfosFromLogicImmo = json_decode($getZipInfosFromLogicImmo);
-        // dd($getZipInfosFromLogicImmo[0]->children[0]);
+        $lct_id_array = [];
+        $lct_level_array = [];
+
+        foreach ($zipLogicImmoParams as $key_zipLogicImmoParams => $value_zipLogicImmoParams) {
+            $lct_id_array[] = $value_zipLogicImmoParams[0]->lct_id;
+            $lct_level_array[] = $value_zipLogicImmoParams[0]->lct_level;
+            $lct_name = str_replace(' ', '-', $value_zipLogicImmoParams[0]->lct_name);
+            $url .= $lct_name.'-'.$value_zipLogicImmoParams[0]->Code_postal.',';
+        }
+
+        $len = count($lct_id_array);
+
+        foreach ($lct_id_array as $key_lct_id_array => $value_lct_id_array) {
+            $url .= $value_lct_id_array.'_'.$lct_level_array[$key_lct_id_array];
+            if ($key_lct_id_array < $len - 1) {
+                $url .= ',';
+            }
+        }
+
+        return $url;
+    }
+
+    public function paramType($type, $url) {
+        $url .= 'groupprptypesids=';
+        $len = count($type);
+
+        foreach ($type as $key_type => $value_type) {
+
+            if($value_type == "appartement") {
+                $url .= '1';
+            }
+            elseif($value_type == "maison") {
+                $url .= '2';
+            }
+
+            if($key_type < $len - 1) {
+               $url .= ','; 
+            }
+        }
+        return $url;
+    }
+
+    public function paramBudgetMax($budgetMax, $url) {
+        $url .= '/pricemax='.$budgetMax;
+        return $url;
+    }
+
+    public function paramAreaMin($surfMin, $url) {
+        $url .= '/areamin='.$surfMin;
+        return $url;  
+    }
+
+    public function paramAreaMax($surfMax, $url) {
+        $url .= '/areamax='.$surfMax;
+        return $url;  
     }
 }
