@@ -25,23 +25,9 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="row first-options-action-menu">
                             <div class="col-md-6">
-                                <select name="localisation" required class="form-control">
-                                    <?php 
-
-                                        $zipcodes = config('zipcode');
-                                        foreach ($zipcodes as $cat => $codes)
-                                        {
-                                              echo '<optgroup label="'.$cat.'">';
-                                              foreach ($codes as $key => $value) {
-                                                  echo '<option value="' . $key . '">' . $value . '</option>';
-                                              }   
-                                              echo '</optgroup>';
-                                        } 
-
-                                    ?>
+                                <select name="localisation[]" required class="form-control zip-select2" multiple="multiple">
+                                    {{-- <option value="3620194" selected="selected">select2/select2</option> --}}
                                 </select>
-                    {{--             <input type="text" class="form-control" placeholder="Saisissez une ville, un quartier..." 
-                                aria-describedby="basic-addon1" name="localisation" required> --}}
                             </div>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" placeholder="Budget max" aria-describedby="basic-addon1" name="budgetMax" required>
@@ -49,10 +35,10 @@
                         </div>
                         <div class="row second-options-action-menu">
                             <div class="col-md-3">
-                                <label class="checkbox-inline"><input type="checkbox" value="maison" name="type" required>Maison</label>
+                                <label class="checkbox-inline"><input type="checkbox" value="maison" name="type[]" required>Maison</label>
                             </div>
                             <div class="col-md-3">
-                                <label class="checkbox-inline"><input type="checkbox" value="appartement" name="type" required>Appartement</label>
+                                <label class="checkbox-inline"><input type="checkbox" value="appartement" name="type[]" required>Appartement</label>
                             </div>
                             <div class="col-md-3">
                                 <span class="btn btn-default btn-critera-action-menu"><i class="fa fa-plus" aria-hidden="true"></i></span>
@@ -76,23 +62,9 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="row first-options-action-menu">
                             <div class="col-md-6">
-                                <select name="localisation" required class="form-control">
-                                    <?php 
-
-                                        $zipcodes = config('zipcode');
-                                        foreach ($zipcodes as $cat => $codes)
-                                        {
-                                              echo '<optgroup label="'.$cat.'">';
-                                              foreach ($codes as $key => $value) {
-                                                  echo '<option value="' . $key . '">' . $value . '</option>';
-                                              }   
-                                              echo '</optgroup>';
-                                        } 
-
-                                    ?>
+                                <select name="localisation[]" required class="form-control zip-select2" multiple="multiple">
+                                    {{-- <option value="3620194" selected="selected">select2/select2</option> --}}
                                 </select>
-{{--                                 <input type="text" class="form-control" placeholder="Saisissez une ville, un quartier..." 
-                                aria-describedby="basic-addon1" name="localisation" required> --}}
                             </div>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" placeholder="Budget max" aria-describedby="basic-addon1" name="budgetMax" required>
