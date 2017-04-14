@@ -43,8 +43,9 @@ function formatRepoSelection (repo) {
 }
 
 $(".zip-select2").select2({
+  placeholder: "Saisir cp ou ville",
   ajax: {
-    url: "http://maxime.bercail.ovh/api/zip/",
+    url: "/api/zip/",
     dataType: 'json',
     delay: 250,
     data: function (params) {
@@ -54,7 +55,7 @@ $(".zip-select2").select2({
       };
     },
     processResults: function (data, params) {
-    	console.log(data);
+      console.log(data);
     //   // parse the results into the format expected by Select2
     //   // since we are using custom formatting functions we do not need to
     //   // alter the remote JSON data, except to indicate that infinite
@@ -76,6 +77,43 @@ $(".zip-select2").select2({
   // templateResult: formatRepo, // omitted for brevity, see the source of this page
   // templateSelection: formatRepoSelection  // omitted for brevity, see the source of this page
 });
+
+
+// M.S : Rendre la map fixe au scroll
+var docHeight = $(document).height();
+var nodeWorkshops = $('.node-workshops').length,
+$mapContainer = $('.col-map-ad-result');
+
+if(
+  $(window).width() > 768
+  && $mapContainer.length > 0
+  // && nodeWorkshops > 2   col-ad-result
+) {
+  var sidebarOffsetTop = $mapContainer.offset().top;
+
+  $(window).scroll(function() {
+    var scrollTop = $(window).scrollTop() + 100;
+    var sidebarMargin = 0;
+    var sidebarMaxMargin = $('.col-ad-result').offset().top + $('.col-ad-result').height() - sidebarOffsetTop + 40;
+    var sidebarMaxMargin = scrollTop + $('.col-ad-result').height() + 40;
+
+    // if($(window).scrollTop() < docHeight - 1500){
+    if($(window).scrollTop() < docHeight - 500){
+      if(scrollTop > sidebarOffsetTop) {
+        sidebarMargin = scrollTop - sidebarOffsetTop;
+      }
+      if(sidebarMargin > sidebarMaxMargin) {
+        sidebarMargin = sidebarMaxMargin;
+      }
+      $mapContainer.css({
+        'margin-top' : sidebarMargin + 'px',
+        'transition': 'margin-top 0.5s ease-in-out'
+      });
+    }
+  });
+}
+
+
 
 
     
