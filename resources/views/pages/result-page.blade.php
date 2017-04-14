@@ -7,18 +7,12 @@
 <nav class="navbar navbar-default sticky-nav-ad-result" data-spy="affix" data-offset-top="53">
 	<div class="container-fluid">
 	  	<ul class="nav navbar-nav filters-sticky-nav-ad-result">
-	  		<li><a href="#" class="project-filter-sticky-nav-ad-result filter-link" data-link="project-box-ad-result">
-	  			@if ($inputs['transaction'] == "sell")
-				    Acheter
-				@elseif ($inputs['transaction'] == "rent")
-				    Louer
-				@endif
-	  		</a></li>
-	    	<li><a href="#" class="type-filter-sticky-nav-ad-result filter-link">{{ ucfirst($inputs['type']) }}</a></li>
-	    	<li><a href="#" class="rooms-filter-sticky-nav-ad-result filter-link">1 et +</a></li>
+	  		<li><a href="#" class="project-filter-sticky-nav-ad-result filter-link" data-link="project-box-ad-result">Projet immo</a></li>
+	    	<li><a href="#" class="type-filter-sticky-nav-ad-result filter-link">Type de bien</a></li>
+	    	<li><a href="#" class="rooms-filter-sticky-nav-ad-result filter-link">Nombre de pièce(s)</a></li>
 	    	<li><a href="#" class="surface-filter-sticky-nav-ad-result filter-link filter-link">Surface</a></li>
 	    	<li><a href="#" class="place-filter-sticky-nav-ad-result filter-link">Localisation</a></li>
-	    	<li><a href="#" class="budget-filter-sticky-nav-ad-result filter-link">{{ $inputs['budgetMax'] }}€ max</a></li>
+	    	<li><a href="#" class="budget-filter-sticky-nav-ad-result filter-link">Budget</a></li>
 	    	<li><a href="#" class="more-filter-sticky-nav-ad-result filter-link">+ de critères</a></li>
 	    	<li><a href="#" class="alert-filter-sticky-nav-ad-result filter-link">
 	    		<i class="fa fa-bell-o" aria-hidden="true" class="pull-left"></i> 
@@ -58,11 +52,11 @@
 								<a class="btn btn-default" href="{{ $value->permaLien }}">Voir l'offre</a>
 							</div>
 							<div class="col-md-3 compare-ad-result">
-								<p lass="good-plans-name-ad-result">Leboncoin</p>
+								<p class="good-plans-name-ad-result">Leboncoin</p>
 								<p class="good-plans-price-ad-result">261 €*</p>
-								<p lass="good-plans-name-ad-result">PAP</p>
+								<p class="good-plans-name-ad-result">PAP</p>
 								<p class="good-plans-price-ad-result">266 €*</p>
-								<p lass="good-plans-name-ad-result">Logic-Immo</p>
+								<p class="good-plans-name-ad-result">Logic-Immo</p>
 								<p class="good-plans-price-ad-result">254 €*</p>
 								<p class="good-plans-ad-result">Afficher les 11 bons plans</p>
 
@@ -79,9 +73,6 @@
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-<!-- Google Map & Filter Boxes -->
-{{-- <script src="js/result-page.js" ></script> --}}
-<!-- Google Map -->
 <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4PbEHid5Cpv2h2peonwutOHk9Jvr-0oY&callback=initMap">
 </script>
