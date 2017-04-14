@@ -25,3 +25,4 @@ Route::get('api/hello', function () {
 	// dd($hello);
     return $hello;
 });
+Route::get('api/zip', 'Tools\ZipController@searchZip');

@@ -8,7 +8,7 @@
 	</div>
 
 	<div class="col-md-8 title-ad-detail">
-		<h4> {{ $results->titre }} {{ $results->nbPieces }} pièces @if(isset($value->surface)){{ $value->surface }}  {{ $value->surfaceUnite }} @endif {{ $results->ville}}</h4>
+		<h4> {{ $results->titre }} {{ $results->nbPieces }} pièces @if(isset($results->surface)){{ $results->surface }}  {{ $results->surfaceUnite }} @endif {{ $results->ville}}</h4>
 	</div>
 	<div class="row row-ad-detail">
 		<div class="col-md-4">
@@ -17,7 +17,7 @@
 		<div class="col-md-8 col-ad-detail">
 			<h4 class="price-ad-detail">{{ $results->prix }} {{ $results->prixUnite }}</h4>
 			@if (isset($results->firstThumb))
-				<img src="{{ $value->firstThumb }}">
+				<img src="{{ $results->firstThumb }}">
 			@else
 				<div class="image-test-ad-detail">Aucune photo disponible</div>
 			@endif
