@@ -27,7 +27,7 @@ class ResultPageController
 		$inputs = $request->all();
 		// dd($inputs);
 
-    	// $resultsLogicimmo = $this->logicimmo->getLogicimmoResults($inputs);
+    	$resultsLogicimmo = $this->logicimmo->getLogicimmoResults($inputs);
 
 
 

@@ -51,28 +51,13 @@ class ZipController extends \App\Http\Controllers\Controller
     }
 
     public function idToLogicImmo ($id) {
-    	// dd('on est dedans');
-    	if (count($id) == 1){		
-	    	$zip = \DB::table('zip')
-	    		->select('Code_postal', 'lct_post_code', '')
-	    		->where('id', $id)
+    	$zip = array();
+		foreach($id as $key => $value) {
+	    	$zip[] = \DB::table('zip')
+    			->select('Code_postal', 'NOM_COM', 'lct_name', 'lct_id', 'lct_level')
+	    		->where('id', $value)
 	    		->get();
-	    	$zipSelogerInsee = substr_replace($zip[0]->INSEE_COM, '0', 2, 0);
-    	}
-    	elseif (count($id) > 1) {
-    		foreach($id as $key => $value) {
-		    	$zip = \DB::table('zip')
-	    			->select('INSEE_COM')
-		    		->where('id', $value)
-		    		->get();
-	    		if (!isset($zipSelogerInsee)) {
-		    		$zipSelogerInsee = substr_replace($zip[0]->INSEE_COM, '0', 2, 0);
-	    		}
-	    		else {
-	    			$zipSelogerInsee.= ','.substr_replace($zip[0]->INSEE_COM, '0', 2, 0);
-	    		}
-    		}
-    	}
-    	return $zipSelogerInsee;
+		}
+    	return $zip;
     }
 }
