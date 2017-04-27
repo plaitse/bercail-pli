@@ -108,3 +108,18 @@ html, body {
 .select2-results__option--highlighted .select2-result-repository__title { color: white; }
 .select2-results__option--highlighted .select2-result-repository__forks, .select2-results__option--highlighted .select2-result-repository__stargazers, .select2-results__option--highlighted .select2-result-repository__description, .select2-results__option--highlighted .select2-result-repository__watchers { color: #c6dcef; }
 
+#search-form > div.row.first-options-action-menu > div:nth-child(1) > span {
+	width: 237px!important;
+}
+
+#search-form > div.filter-box-ad-result.place-box-ad-result > ul > li:nth-child(1) > div > span {
+	width: 237px!important;
+}
+
+#search-form > div.filter-box-ad-result.place-box-ad-result > ul > li:nth-child(1) > div > span > span.selection > span > ul > li > input {
+	width: 237px!important;
+}
+
+#search-form > div.row.first-options-action-menu > div:nth-child(1) > span > span.selection > span > ul > li > input {
+	width: 237px!important;
+}

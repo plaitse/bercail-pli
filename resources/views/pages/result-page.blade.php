@@ -31,36 +31,52 @@
 		<div class="col-md-8 col-ad-result">
 			@if ($results->nbTrouvees > 1)
 				@foreach($results->annonces->annonce as $value)
-					<div class="box-ad-result" data-latitude="{{ $value->latitude }}" data-longitude="{{ $value->longitude }}">
+					<div class="box-ad-result" @if(isset($value[0]->latitude) && isset($value[0]->longitude)) data-latitude="{{ $value[0]->latitude }}" data-longitude="{{ $value[0]->longitude }}@endif">
 						<div class="row">
 							<div class="col-md-3 image-ad-result">
-								@if (isset($value->firstThumb))
-									<a href="/detail?SelogerId={{ $value->idAnnonce }}"><img src="{{ $value->firstThumb }}"></a>
-								@else
-									<div class="image-test-ad-result">Aucune photo disponible</div>
-								@endif					
+								<div class="row">
+									<div class="col-md-6">									
+										@if (strstr($value[0]->permaLien, 'seloger.com')) <img class="img-mini" src="img/se-loger.png">@endif
+										@if (strstr($value[0]->permaLien, 'logic-immo')) <img class="img-mini" src="img/logic-immo.png">@endif
+									</div>
+									<div class="col-md-6">	
+										@if (isset($value[0]->firstThumb))
+											<a href="/detail?SelogerId=@if(isset($value[0]->idAnnonce)){{ $value[0]->idAnnonce }}@endif"><img class="img-thumbnail" src="{{ $value[0]->firstThumb }}"></a>
+										@else
+											<div class="image-test-ad-result">Aucune photo disponible</div>
+										@endif
+									</div>
+								</div>		
 							</div>
-							<div class="col-md-3 description-ad-result">
-								<h4 class="libelle-ad-result">{{ $value->libelle }}</h4>
-
-								<p>{{ $value->ville }} </p>
-								<p class="surface-ad-result"> {{ $value->nbPiece }} pièce(s) 
-									@if(isset($value->surface)){{ $value->surface }}  {{ $value->surfaceUnite }} @endif</p>
+							<div class="col-md-3 description-ad-result">								
+								<h4 class="libelle-ad-result">{{ $value[0]->libelle }}</h4>
+								<p>@if(isset($value[0]->ville)){{ $value[0]->ville }}@endif</p>
+								<p class="surface-ad-result"> @if(isset($value[0]->nbPiece)){{ $value[0]->nbPiece }} pièce(s) @endif
+								@if(isset($value[0]->surface)){{ $value[0]->surface }}@endif  @if(isset($value[0]->surfaceUnite)){{ $value[0]->surfaceUnite }}@endif </p>
 							</div>
 							<div class="col-md-3 price-ad-result">
-								<h3>{{ $value->prix }} €*</h3>
-								<a class="btn btn-default" href="{{ $value->permaLien }}">Voir l'offre</a>
+								<h3>@if(isset($value[0]->prix)){{ $value[0]->prix }} €*@endif</h3>
+								<a class="btn btn-default" target="_blank" href="{{ $value[0]->permaLien }}">Voir l'offre</a>
 							</div>
+							@if(count($value) > 1)
 							<div class="col-md-3 compare-ad-result">
-								<p class="good-plans-name-ad-result">Leboncoin</p>
+								<h5>Doublons trouvés</h5>
+								@foreach($value as $doublons)
+									<p>
+										@if (strstr($doublons->permaLien, 'seloger.com')) <img class="img-mini-mini" src="img/se-loger.png">@endif
+										@if (strstr($doublons->permaLien, 'logic-immo')) <img class="img-mini-mini" src="img/logic-immo.png">@endif
+										@if(isset($doublons->prix)){{ $doublons->prix }} €@endif
+									</p>
+								@endforeach
+{{-- 								<p class="good-plans-name-ad-result">Leboncoin</p>
 								<p class="good-plans-price-ad-result">261 €*</p>
 								<p class="good-plans-name-ad-result">PAP</p>
 								<p class="good-plans-price-ad-result">266 €*</p>
 								<p class="good-plans-name-ad-result">Logic-Immo</p>
 								<p class="good-plans-price-ad-result">254 €*</p>
-								<p class="good-plans-ad-result">Afficher les 11 bons plans</p>
-
+								<p class="good-plans-ad-result">Afficher les 11 bons plans</p> --}}
 							</div>
+							@endif
 						</div>
 					</div>
 				@endforeach
@@ -70,10 +86,4 @@
 		</div>
 	</div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"
-        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-<script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4PbEHid5Cpv2h2peonwutOHk9Jvr-0oY&callback=initMap">
-</script>
 @stop
