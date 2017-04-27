@@ -254,3 +254,9 @@ a.alert-filter-sticky-nav-ad-result {
 	font-weight: bold;
 	padding-bottom: 3px;
 }
+.img-mini {
+	max-width: 100px;
+}
+.img-mini-mini {
+	max-width: 40px;
+}

@@ -20,24 +20,68 @@ class LogicimmoModel extends Model
 
     public function getLogicimmoResults($inputs) {
 
-        // $client = new Client();
-        // $resultsLogicimmo = $this->logicimmo->getLogicimmo($inputs);
-
         $url = $this->urlBuilder($inputs);
         // dd($url);
 
+        $crawler = $this->client->request('GET', $url);
 
+        $nbResultats = $crawler->filter('#nbResultats')->attr('value');
 
-     //    $crawler = $this->client->request('GET', 'http://www.logic-immo.com/vente-immobilier-paris-9e-75009,23609_2/options/groupprptypesids=1,2,6,7,12,15/pricemin=450000/pricemax=950000/areamin=30');
-     //    $crawler->filter('.offer-block a.offer-link')->each(function ($node) {
-     //    dump($node->text());
-     //    });
-     //    dd($crawler);
+        $nbPage = (int)ceil(($nbResultats / 9) + 1);
 
-    	// return $crawler;
+        for ($i = 1; $i <= $nbPage; $i++) { 
+            $url_array = explode('/', $url);
+            $url_array[6] = 'page='.$i;
+            $url = implode('/', $url_array);
+            $crawler = $this->client->request('GET', $url);
+            $offer_url[] = $crawler->filter('.offer-details-first-left > p > a')->each(function ($node) {
+                return $node->attr('href');
+            });
+        }
+        // dd($offer_url);
+        $data = [];
+        $i = 0;
+        foreach ($offer_url as $key_offer_url => $value_offer_url) {
+            foreach ($value_offer_url as $key_value_offer_url => $value_value_offer_url) {
+                if (strstr($value_value_offer_url, 'http://www.logic-immo.com/detail-vente')) {
+                    // echo  $value_value_offer_url.'<br>';              
+                    $crawler = $this->client->request('GET', $value_value_offer_url);
+                    if($crawler->filter('.main-price')->count() > 0) {
+                        $data[$i]['prix'] = str_replace('€', '', str_replace(' ', '', $crawler->filter('.main-price')->text()));
+                    }
+                    if($crawler->filter('#offer_pictures_main')->count() > 0) {
+                        $data[$i]['firstThumb'] = $crawler->filter('#offer_pictures_main')->attr('src');
+                    }
+                    if($crawler->filter('h1')->count() > 0) {
+                        $data[$i]['libelle'] = $crawler->filter('h1')->text();
+                    }
+                    if($crawler->filter('.offer-rooms-number')->count() > 0) {
+                        $data[$i]['nbPiece'] = $crawler->filter('.offer-rooms-number')->text();
+                    }
+                    if($crawler->filter('.offer-area-number')->count() > 0) {
+                        $data[$i]['surface'] = $crawler->filter('.offer-area-number')->text();
+                    }
+                    if($crawler->filter('.offer-locality')->count() > 0) {
+                        $cp = $crawler->filter('.offer-locality')->text();
+                        $pattern = '/([0-9]{5})/';
+                        preg_match($pattern, $cp, $matches);
+                        $data[$i]['cp'] = $matches[1];
+                    }
+                    if($crawler->filter('.offer-description-text meta')->count() > 0) {
+                        $data[$i]['descriptif'] = $crawler->filter('.offer-description-text meta')->attr('content');
+                    }
+                    $data[$i]['permaLien'] = $value_value_offer_url;
+                    $data[$i] = (object)$data[$i];
+                    $i++;
+                }
+            }
+        }
+
+        // dd($data);
+
+    	return $data;
     }
     public function urlBuilder($inputs) {
-        // dd($inputs);
         $url = 'http://www.logic-immo.com/';
         $url = $this->paramProject($inputs['transaction'], $url);
         $url = $this->paramZip($inputs['localisation'], $url);
@@ -50,9 +94,6 @@ class LogicimmoModel extends Model
         if(isset($inputs['surface-max'])){
             $url = $this->paramAreaMax($inputs['surface-max'], $url);
         }
-        // dd($url);
-        // http://www.logic-immo.com/vente-immobilier-paris-9e-75009,23609_2/options/groupprptypesids=1,2,6,7,12,15/pricemin=450000/pricemax=950000/areamin=30
-       
         return $url;
     }
 
@@ -66,14 +107,7 @@ class LogicimmoModel extends Model
         return $url;
     }
 
-    // http://www.logic-immo.com/vente-immobilier-paris-8e-75008,paris-7e-75007,23607_2,23606_2/options/groupprptypesids=1,2,6,7,12,15/pricemin=450000/pricemax=950000/areamin=30
-
-    // http://www.logic-immo.com/vente-immobilier-paris-8e-75008,paris-7e-75007,23607_2,23606_2/options/groupprptypesids=1,2,6,7,12,15/searchoptions=1/pricemin=450000/pricemax=950000/areamin=30/nbbedrooms=2,3/advancedcriteria=14,3,24,13,16,10
-
-    //http://www.logic-immo.com/vente-immobilier-paris-8e-75008,paris-7e-75007,23607_2,23606_2/options/groupprptypesids=1,2,15,12,6,7/pricemin=500/pricemax=2000000/areamin=34/areamax=500/nbrooms=2,3,4/nbbedrooms=1,2,3
-
     public function paramZip($zip, $url) {
-        // dd($zip);
         $zipLogicImmoParams = $this->ZipController->idToLogicImmo($zip);
         $lct_id_array = [];
         $lct_level_array = [];
@@ -114,7 +148,7 @@ class LogicimmoModel extends Model
                $url .= ','; 
             }
         }
-        return $url;
+        return $url.'/page=1';
     }
 
     public function paramBudgetMax($budgetMax, $url) {
