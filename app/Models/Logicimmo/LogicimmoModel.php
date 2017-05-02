@@ -46,6 +46,8 @@ class LogicimmoModel extends Model
                 if (strstr($value_value_offer_url, 'http://www.logic-immo.com/detail-vente')) {
                     // echo  $value_value_offer_url.'<br>';              
                     $crawler = $this->client->request('GET', $value_value_offer_url);
+                    $data[$i]['origin'] = "li";
+                    $data[$i]['uuid'] = uniqid('uuid_', false);
                     if($crawler->filter('.main-price')->count() > 0) {
                         $data[$i]['prix'] = str_replace('€', '', str_replace(' ', '', $crawler->filter('.main-price')->text()));
                     }
@@ -62,10 +64,27 @@ class LogicimmoModel extends Model
                         $data[$i]['surface'] = $crawler->filter('.offer-area-number')->text();
                     }
                     if($crawler->filter('.offer-locality')->count() > 0) {
-                        $cp = $crawler->filter('.offer-locality')->text();
+                        $location = $crawler->filter('.offer-locality')->text();
+                        $data[$i]['ville'] = preg_replace('/\s+/', ' ',$location);
                         $pattern = '/([0-9]{5})/';
-                        preg_match($pattern, $cp, $matches);
+                        preg_match($pattern, $location, $matches);
                         $data[$i]['cp'] = $matches[1];
+                        $q_google = str_replace('|', '-', str_replace(' ', '%20', $data[$i]['ville']));
+                        $q_google = str_replace('...', '', $q_google);
+                        $location_data_google_map_api = file_get_contents("http://maps.googleapis.com/maps/api/geocode/json?address=".$q_google);
+                        $location_data_google_map_api_object = json_decode($location_data_google_map_api);
+                        if (isset($location_data_google_map_api_object->results[0])) {
+                            $data[$i]['latitude'] = $location_data_google_map_api_object->results[0]->geometry->location->lat;
+                            $data[$i]['longitude'] = $location_data_google_map_api_object->results[0]->geometry->location->lng;
+                        }
+                        // TODO : check why some localisation dont work
+                        // else{
+                        //     // dd($q_google);
+                        //     $test = file_get_contents("http://maps.googleapis.com/maps/api/geocode/json?address=PARIS%209E%20(75009)%20-%20Clichy%20-%20Trinité/Lafayette%20-%20Richer");
+                        //     dd($test);
+                        //     dd($location_data_google_map_api_object);
+                        //     dd($i);
+                        // }
                     }
                     if($crawler->filter('.offer-description-text meta')->count() > 0) {
                         $data[$i]['descriptif'] = $crawler->filter('.offer-description-text meta')->attr('content');

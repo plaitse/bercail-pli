@@ -43,6 +43,15 @@ class SelogerModel extends Model
 		// dd($results);
 		//echo '<pre>' . print_r($results->annonces->annonce[0]->firstThumb, TRUE) . '<pre>';
 
+		foreach ($results->annonces->annonce as $key => $value) {
+			$results->annonces->annonce[$key]->origin = "sl";
+			$results->annonces->annonce[$key]->uuid = uniqid('uuid_', false);
+			if ((int)$value->latitude  == 0 || (int)$value->longitude == 0){
+				unset($results->annonces->annonce[$key]->latitude);
+				unset($results->annonces->annonce[$key]->longitude);
+			}
+		}
+
     	return $results;
     }
 

@@ -5,7 +5,7 @@ function initMap() {
 
   	$('.box-ad-result').each(function(){
 		if (isNaN(parseFloat($(this).attr('data-latitude'))) == false) {
-			console.log($(this).find('.img-thumbnail').attr('src'));
+			// console.log($(this).find('.img-thumbnail').attr('src'));
             var html = '<div class="row"> <div class="col-md-12"> <h4>'+$(this).find('.libelle-ad-result').text()+'</h4> </div> <div class="col-md-4"> <img class="img-thumbnail" src="'+$(this).find('.img-thumbnail').attr('src')+'"> </div> <div class="col-md-6"> <p>LOCALISATION</p> <p>NB PIECE</p> <p>SURFACE</p> <p>PRIX</p> <div> </div>';
 			locations.push([html, parseFloat($(this).attr('data-latitude')), parseFloat($(this).attr('data-longitude')), i]);
 			i++;
@@ -22,6 +22,7 @@ function initMap() {
     var bounds = new google.maps.LatLngBounds();
 
     for (i = 0; i < locations.length; i++) {
+        // console.log(i);
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(locations[i][1], locations[i][2]),
             map: map
