@@ -35,10 +35,10 @@
                         </div>
                         <div class="row second-options-action-menu">
                             <div class="col-md-3">
-                                <label class="checkbox-inline"><input type="checkbox" value="maison" name="type[]" required>Maison</label>
+                                <label class="checkbox-inline"><input type="checkbox" value="maison" name="type[]" >Maison</label>
                             </div>
                             <div class="col-md-3">
-                                <label class="checkbox-inline"><input type="checkbox" value="appartement" name="type[]" required>Appartement</label>
+                                <label class="checkbox-inline"><input type="checkbox" value="appartement" name="type[]">Apartement</label>
                             </div>
                             <div class="col-md-3">
                                 <span class="btn btn-default btn-critera-action-menu"><i class="fa fa-plus" aria-hidden="true"></i></span>
@@ -72,10 +72,10 @@
                         </div>
                         <div class="row second-options-action-menu">
                             <div class="col-md-3">
-                                <label class="checkbox-inline"><input type="checkbox" value="maison" name="type" required>Maison</label>
+                                <label class="checkbox-inline"><input type="checkbox" value="maison" name="type[]" required>Maison</label>
                             </div>
                             <div class="col-md-3">
-                                <label class="checkbox-inline"><input type="checkbox" value="appartement" name="type" required>Appartement</label>
+                                <label class="checkbox-inline"><input type="checkbox" value="appartement" name="type[]" required>Appartement</label>
 
                             </div>
                             <div class="col-md-3">

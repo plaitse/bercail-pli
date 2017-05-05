@@ -33,20 +33,12 @@
 				@foreach($results->annonces->annonce as $value)
 					<div class="box-ad-result" @if(isset($value[0]->latitude) && isset($value[0]->longitude)) data-latitude="{{ $value[0]->latitude }}" data-longitude="{{ $value[0]->longitude }}@endif">
 						<div class="row">
-							<div class="col-md-3 image-ad-result">
-								<div class="row">
-									<div class="col-md-6">									
-										@if ($value[0]->origin == "sl") <img class="img-mini" src="img/se-loger.png">@endif
-										@if ($value[0]->origin == "li") <img class="img-mini" src="img/logic-immo.png">@endif
-									</div>
-									<div class="col-md-6">	
-										@if (isset($value[0]->firstThumb))
-											<a href="/detail?SelogerId=@if(isset($value[0]->idAnnonce)){{ $value[0]->idAnnonce }}@endif"><img class="img-thumbnail" src="{{ $value[0]->firstThumb }}"></a>
-										@else
-											<div class="image-test-ad-result">Aucune photo disponible</div>
-										@endif
-									</div>
-								</div>		
+							<div class="col-md-3 image-ad-result">	
+								@if (isset($value[0]->firstThumb))
+									<img class="img-thumbnail" src="{{ $value[0]->firstThumb }}">
+								@else
+									<div class="image-test-ad-result">Aucune photo disponible</div>
+								@endif		
 							</div>
 							<div class="col-md-3 description-ad-result">								
 								<h4 class="libelle-ad-result">{{ $value[0]->libelle }}</h4>
@@ -55,6 +47,8 @@
 								@if(isset($value[0]->surface)){{ $value[0]->surface }}@endif  @if(isset($value[0]->surfaceUnite)){{ $value[0]->surfaceUnite }}@endif </p>
 							</div>
 							<div class="col-md-3 price-ad-result">
+								@if ($value[0]->origin == "sl") <img class="img-mini" src="img/se-loger.png">@endif
+								@if ($value[0]->origin == "li") <img class="img-mini" src="img/logic-immo.png">@endif
 								<h3>@if(isset($value[0]->prix)){{ $value[0]->prix }} €*@endif</h3>
 								<a class="btn btn-default" target="_blank" href="{{ $value[0]->permaLien }}">Voir l'offre</a>
 							</div>
@@ -80,27 +74,18 @@
 									   		<div class="modal-content">
 									      		<div class="modal-header">
 									        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									        		<h4 class="modal-title" id="myModalLabel">Annonce n°{{ $doublons->uuid }}</h4>
+									        		<h4 class="modal-title" id="myModalLabel">{{ $doublons->libelle }}</h4>
 									      		</div>
 									      		<div class="modal-body">
 										      		<div class="row">
 			        									<div class="col-md-3">
-															<div class="row">
-																<div class="col-md-6">									
-																	@if ($doublons->origin == "sl") <img class="img-mini" src="img/se-loger.png">@endif
-																	@if ($doublons->origin == "li") <img class="img-mini" src="img/logic-immo.png">@endif
-																</div>
-																<div class="col-md-6">	
-																	@if (isset($doublons->firstThumb))
-																		<a href="/detail?SelogerId=@if(isset($doublons->idAnnonce)){{ $doublons->idAnnonce }}@endif"><img class="img-thumbnail" src="{{ $doublons->firstThumb }}"></a>
-																	@else
-																		<div class="image-test-ad-result">Aucune photo disponible</div>
-																	@endif
-																</div>
-															</div>		
+															@if (isset($doublons->firstThumb))
+																<img class="img-thumbnail" src="{{ $doublons->firstThumb }}">
+															@else
+																<div class="image-test-ad-result">Aucune photo disponible</div>
+															@endif
 														</div>
 														<div class="col-md-3">								
-															<h4 class="">{{ $doublons->libelle }}</h4>
 															<p>@if(isset($doublons->ville)){{ $doublons->ville }}@endif</p>
 															<p class=""> @if(isset($doublons->nbPiece)){{ $doublons->nbPiece }} pièce(s) @endif
 															@if(isset($doublons->surface)){{ $doublons->surface }}@endif  @if(isset($doublons->surfaceUnite)){{ $doublons->surfaceUnite }}@endif </p>
@@ -108,6 +93,10 @@
 														<div class="col-md-3">
 															<h3>@if(isset($doublons->prix)){{ $doublons->prix }} €*@endif</h3>
 															<a class="btn btn-default" target="_blank" href="{{ $doublons->permaLien }}">Voir l'offre</a>
+														</div>
+														<div class="col-md-3">									
+															@if ($doublons->origin == "sl") <img class="img-mini" src="img/se-loger.png">@endif
+															@if ($doublons->origin == "li") <img class="img-mini" src="img/logic-immo.png">@endif
 														</div>
 									      			</div>
 {{-- 										      	<div class="modal-footer">

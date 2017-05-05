@@ -1,6 +1,6 @@
 <form method="post" id="search-form" action="/results">
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-	<div class="tri">
+<!-- 	<div class="tri">
 		<p class="filter-sort-ad-result">
 			Trier par :
 		    <select name="tri" id="tri">
@@ -12,7 +12,7 @@
 				<option value="surface_desc">Surf dsc</option>
 		    </select>
 		</p>
-	</div>
+	</div> -->
 	<div class="filter-box-ad-result project-box-ad-result">
 		<p class="filter-title-box-ad-result">Quel est votre projet ?</p>
 			<ul class="nav navbar-nav filter-change-box-ad-result">

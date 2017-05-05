@@ -20,6 +20,8 @@ class SortController extends \App\Http\Controllers\Controller
                             if (!in_array($key_results_second, $already_scan_tab) &&
                                 $value_results->surface == $value_results_second->surface &&
                                 $value_results->nbPiece == $value_results_second->nbPiece &&
+                                ((int)$value_results->prix <= (int)$value_results_second->prix * 1.10) &&
+                                ((int)$value_results->prix >= (int)$value_results_second->prix * 0.90) &&
                                 $value_results->cp == $value_results_second->cp)
                             {
                                 $final_tab[$i][] = $value_results_second;

@@ -240,6 +240,7 @@ a.alert-filter-sticky-nav-ad-result {
     text-align: center;
     padding-top: 10px;
     border-radius: 5px;
+    overflow-y: scroll;
 }
 .compare-ad-result > p {
 	margin-bottom: 0px;

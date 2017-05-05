@@ -151,6 +151,7 @@ class LogicimmoModel extends Model
     }
 
     public function paramType($type, $url) {
+        // dd($type);
         $url .= 'groupprptypesids=';
         $len = count($type);
 
