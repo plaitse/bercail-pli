@@ -21,12 +21,8 @@ class LogicimmoModel extends Model
     public function getLogicimmoResults($inputs) {
 
         $url = $this->urlBuilder($inputs);
-        // dd($url);
-
         $crawler = $this->client->request('GET', $url);
-
         $nbResultats = $crawler->filter('#nbResultats')->attr('value');
-
         $nbPage = (int)ceil(($nbResultats / 9) + 1);
 
         for ($i = 1; $i <= $nbPage; $i++) { 
@@ -38,13 +34,12 @@ class LogicimmoModel extends Model
                 return $node->attr('href');
             });
         }
-        // dd($offer_url);
+
         $data = [];
         $i = 0;
         foreach ($offer_url as $key_offer_url => $value_offer_url) {
             foreach ($value_offer_url as $key_value_offer_url => $value_value_offer_url) {
                 if (strstr($value_value_offer_url, 'http://www.logic-immo.com/detail-vente')) {
-                    // echo  $value_value_offer_url.'<br>';              
                     $crawler = $this->client->request('GET', $value_value_offer_url);
                     $data[$i]['origin'] = "li";
                     $data[$i]['uuid'] = uniqid('uuid_', false);
@@ -77,14 +72,6 @@ class LogicimmoModel extends Model
                             $data[$i]['latitude'] = $location_data_google_map_api_object->results[0]->geometry->location->lat;
                             $data[$i]['longitude'] = $location_data_google_map_api_object->results[0]->geometry->location->lng;
                         }
-                        // TODO : check why some localisation dont work
-                        // else{
-                        //     // dd($q_google);
-                        //     $test = file_get_contents("http://maps.googleapis.com/maps/api/geocode/json?address=PARIS%209E%20(75009)%20-%20Clichy%20-%20Trinité/Lafayette%20-%20Richer");
-                        //     dd($test);
-                        //     dd($location_data_google_map_api_object);
-                        //     dd($i);
-                        // }
                     }
                     if($crawler->filter('.offer-description-text meta')->count() > 0) {
                         $data[$i]['descriptif'] = $crawler->filter('.offer-description-text meta')->attr('content');
@@ -95,8 +82,6 @@ class LogicimmoModel extends Model
                 }
             }
         }
-
-        // dd($data);
 
     	return $data;
     }
@@ -151,7 +136,6 @@ class LogicimmoModel extends Model
     }
 
     public function paramType($type, $url) {
-        // dd($type);
         $url .= 'groupprptypesids=';
         $len = count($type);
 

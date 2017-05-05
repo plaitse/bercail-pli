@@ -1,6 +1,10 @@
 @extends('layout')
 
 @section('content')
+    <div id="loader-div">
+        <p>Recherche en cours...</p>
+       <div class="loader"></div>
+    </div>
     <div class="row action-menu">
         <div class="center-block block-action-menu">
 

@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 class SortController extends \App\Http\Controllers\Controller
 {
     public function index($results){
-        // dd($results);
         $final_tab = [];
         $already_scan_tab = [];
         $i = 0;

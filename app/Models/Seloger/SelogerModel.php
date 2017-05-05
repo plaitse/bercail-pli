@@ -10,12 +10,9 @@ use App\Http\Controllers\Tools\ZipController;
 class SelogerModel extends Model
 {
     public function getSelogerInfo($inputs) {
-    	// dd($inputs);
 
 		$search = new \Seloger\Search();
 		$ZipController = new ZipController();
-
-		// Apply custom options
 		$search->type($inputs["transaction"]);
 		$search->order('date_desc');
 		$search->property($inputs["type"]);
@@ -32,16 +29,7 @@ class SelogerModel extends Model
 
 		$search->zipcode($ZipController->idToSelogerInsee($inputs['localisation']));
 		$search->price(0, $inputs["budgetMax"]);
-		// $search->page(2);
-
-		// Additionnal
-		// $search->si('elevator', TRUE);
-
-		// Get results
-		// dd($search);
 		$results = $search->run();
-		// dd($results);
-		//echo '<pre>' . print_r($results->annonces->annonce[0]->firstThumb, TRUE) . '<pre>';
 
 		foreach ($results->annonces->annonce as $key => $value) {
 			$results->annonces->annonce[$key]->origin = "sl";

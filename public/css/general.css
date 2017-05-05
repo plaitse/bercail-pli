@@ -123,3 +123,29 @@ html, body {
 #search-form > div.row.first-options-action-menu > div:nth-child(1) > span > span.selection > span > ul > li > input {
 	width: 237px!important;
 }
+#loader-div {
+	display: none;
+    margin: auto 47%;
+    width: 400px;
+    margin-top: 15%;
+}
+#loader-div p {
+	font-size: 25px;
+	font-weight: bold;
+	margin-left: -65px;
+	color: #fafafa;
+    margin-bottom: 60px;
+}
+.loader {
+    border: 16px solid #F0DCA6; /* Light grey */
+    border-top: 16px solid #C2D7E4; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
